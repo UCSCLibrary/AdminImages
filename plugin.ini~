@@ -1,0 +1,10 @@
+[info]
+name="Nuxeo Link"
+author="Ned Henry"
+description="Adds the ability to navigate a Nuxeo DAMS and import Nuxeo documents as Omeka items. Designed specifically for use with the UCLDC Nuxeo DAMS."
+license="GPLv3"
+link=""
+support_link=""
+omeka_minimum_version="2.1"
+omeka_target_version="2.2"
+version="1.1.10"
