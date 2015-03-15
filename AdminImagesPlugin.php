@@ -25,7 +25,8 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
     protected $_hooks = array(
         'install',
         'uninstall',
-        'define_acl'
+        'define_acl',
+	'admin_head'
     );
 
     /**
@@ -52,10 +53,11 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
         $sql = "
         CREATE TABLE IF NOT EXISTS `$db->AdminImage` (
           `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+          `file_id` int(10) unsigned NOT NULL,
           `creator_id` int(10) unsigned NOT NULL,
           `title` tinytext COLLATE utf8_unicode_ci NOT NULL,
-          `slug` tinytext COLLATE utf8_unicode_ci NOT NULL,
           PRIMARY KEY (`id`),
+          KEY `file_id` (`file_id`),
           KEY `creator_id` (`creator_id`)
         ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
         $db->query($sql);
@@ -74,6 +76,12 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
         $sql = "DROP TABLE IF EXISTS `$db->AdminImage`";
         $db->query($sql);
 
+    }
+
+    public function hookAdminHead()
+    {
+      queue_css_file('admin-images');
+      queue_js_file('admin-images');
     }
 
     /**

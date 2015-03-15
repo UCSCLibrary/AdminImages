@@ -12,14 +12,11 @@ class AdminImage extends Omeka_Record_AbstractRecord
      */
     public $id; 
 
-    /*
-     *@var string The slug of the collection
-     */
-    public $slug; 
-
     public $title;
 
-    public $created_by_user_id;
+    public $creator_id;
+
+    public $file_id;
 
 }
 ?>

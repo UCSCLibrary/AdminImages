@@ -23,7 +23,30 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
 
   public function browseAction()
   {
+      $this->view->images = get_db()->getTable('AdminImage')->findAll();
+  }
 
+  public function addAction() 
+  {
+    $flashMessenger = $this->_helper->FlashMessenger;
+    include_once(dirname(dirname(__FILE__))."/forms/AddFileForm.php");
+    $this->view->form = new Admin_Images_Add_Form();
+    try{
+      if ($this->getRequest()->isPost()){
+	if($response = $this->view->form->isValid($this->getRequest()->getPost()))
+	  $successMessage = $this->_processNewFile();
+	else 
+	  $flashMessenger->addMessage('Unfortunately there was an error importing your image. '.$response,'error');
+      } 
+    } catch (Exception $e){
+      $flashMessenger->addMessage($e->getMessage(),'error');
+    }
+    $flashMessenger->addMessage($successMessage,'success');
+  }
+
+  private function _processNewFile()
+  {
+    print_r($_FILES) and die('end files');
   }
 
 }
