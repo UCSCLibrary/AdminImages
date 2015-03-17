@@ -23,60 +23,14 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
      * @var array Hooks for the plugin.
      */
     protected $_hooks = array(
-        'install',
-        'uninstall',
         'define_acl',
-	'admin_head'
+        'admin_head'
     );
 
     /**
      * @var array Filters for the plugin.
      */
     protected $_filters = array('admin_navigation_main');
-
-    /**
-     * @var array Options and their default values.
-     */
-    protected $_options = array(
-    );
-
-    /**
-     * Install the plugin's options
-     *
-     * @return void
-     */
-    public function hookInstall() {
-        $this->_installOptions();
-
-                // Create the table.
-        $db = $this->_db;
-        $sql = "
-        CREATE TABLE IF NOT EXISTS `$db->AdminImage` (
-          `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-          `file_id` int(10) unsigned NOT NULL,
-          `creator_id` int(10) unsigned NOT NULL,
-          `title` tinytext COLLATE utf8_unicode_ci NOT NULL,
-          PRIMARY KEY (`id`),
-          KEY `file_id` (`file_id`),
-          KEY `creator_id` (`creator_id`)
-        ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci";
-        $db->query($sql);
-    }
-
-    /**
-     * Uninstall the options
-     *
-     * @return void
-     */
-    public function hookUninstall()
-    {
-        $this->_uninstallOptions();
-        // Drop the table.
-        $db = $this->_db;
-        $sql = "DROP TABLE IF EXISTS `$db->AdminImage`";
-        $db->query($sql);
-
-    }
 
     public function hookAdminHead()
     {

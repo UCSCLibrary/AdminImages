@@ -12,16 +12,32 @@ echo flash();
 <?php else:?>
 <ul id="admin-images-list">
 <?php foreach($images as $image) : ?>
-  <?php $file = get_record_by_id('File',$image->file_id); ?>
 <li class="admin-image">
-  <label><?php echo $image->title; ?></label>
-<?php echo link_to_file_show(file_image('thumbnail',array(),$file)); ?>
-  <p class="admin-image-url">
-  <?php echo $file->getWebPath();?>
-</p>
-  <button class="admin-image-delete" id="admin-image-delete-<?php echo $file->id; ?>">
-  Delete
-  </button>
+  <label><?php echo $image->original_filename; ?></label>
+
+<table>
+<tr>
+<td>Original:</td>
+<td><?php echo absolute_url('file/original/'.$image->filename);?></td>
+</tr><tr>
+<td>Fullsize:</td>
+<td><?php echo absolute_url('file/fullsize/'.$image->filename);?></td>
+</tr><tr>
+<td>Square Thumbnail:</td>
+<td><?php echo absolute_url('file/square_thumbnails/'.$image->filename);?></td>
+</tr><tr>
+<td>Thumbnail:</td>
+<td><?php echo absolute_url('file/thumbnails/'.$image->filename);?></td>
+</tr>
+</table>
+
+<div class="admin-image-thumb">
+<?php echo $image->linkToImage();?>
+</div>
+
+<form action="<?php echo admin_url('admin-images/image/delete/id/'.$image->id);?>">
+  <input value="Delete" type="submit" class="admin-image-delete" id="admin-image-delete-<?php echo $image->id; ?>">
+</form>
 </li>
 <?php endforeach; ?>
 </ul>

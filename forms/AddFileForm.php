@@ -30,31 +30,22 @@ class Admin_Images_Add_Form extends Omeka_Form
      *@return void
      */
     private function _registerElements()
-    {
-      $this->addElement('text', 'title', array(
-						    'label'         => __('Title'),
-						    'description'   => __('Enter the title of the image to add'),		    
-						    'order'         => 1,
-						    'required'      => true,
-						    
-						    )
-			);
-      
+    { 
         //Upload or url:
         $this->addElement('radio', 'ingest-type', array(
             'label'         => __('Ingest Type'),
             'description'   => __('Please indicate whether you wish to upload an image from your computer or import an image from the internet by its URL.'),
-            'value'         => 'upload',
+//            'value'         => 'upload',
 	    'order'         => 2,
 	    'multiOptions'       => array(
-					  'upload'=>'Upload',
-					  'url'=>'Url'
+					  'Upload'=>'Upload',
+					  'Url'=>'Url'
 					  )
 							   )
 			  );
 
         //Upload:
-    $this->addElement('file', 'upload', array(
+    $this->addElement('file', 'file', array(
         'label'         => 'Upload Image:',
         'destination'   => sys_get_temp_dir(),
 	'order'         => 3,
@@ -92,9 +83,5 @@ class Admin_Images_Add_Form extends Omeka_Form
 	    'label' => __('Import Image'),
 	    'order' => 6
         ));
-	
-
     }
-
-
 }

@@ -1,3 +1,40 @@
 .admin-images #content form div {
     clear: left;
 }
+
+.admin-images #admin-images-list {
+  list-style-type: none;	
+}
+
+.admin-images #admin-images-list li {
+    margin-bottom:25px;
+//    border-bottom: 1px solid black;
+}
+
+.admin-images #admin-images-list li label {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    opacity: 0.7;
+    background: none repeat scroll 0% 0% rgb(221, 221, 221);
+    font-size: 1.5em;
+    line-height: 1.3em;
+}
+
+.admin-images #admin-images-list li table {
+    width: 60%;
+    border-collapse: collapse;
+    clear: both;
+    margin-bottom: 16px;
+    float: right;
+}
+
+.admin-images #admin-images-list li form {
+    width: 200px;
+    text-align: center;
+}
+
+.admin-images .admin-image-thumb {
+    width:200px;
+//    float:left;
+}
