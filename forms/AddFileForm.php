@@ -76,7 +76,7 @@ class Admin_Images_Add_Form extends Omeka_Form
 			  );
 
 
-
+	$this->addElement('hash','csrf_token');
 
         // Submit:
         $this->addElement('submit', 'submit', array(

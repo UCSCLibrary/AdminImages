@@ -24,6 +24,7 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
   public function browseAction()
   {
       require_once(dirname(dirname(__FILE__))."/classes/AdminImage.php");
+      $this->view->csrf = new Omeka_Form_SessionCsrf;
       $this->view->images = AdminImage::FindAll();
   }
 
@@ -50,6 +51,7 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
   }
 
   public function deleteAction() {
+    $this->_validatePost();
       require_once(dirname(dirname(__FILE__)).'/classes/AdminImage.php');
       if( ! $id = $this->getParam('id') )
           die('error');
@@ -108,5 +110,13 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
         }
     }
     
+    
+  private function _validatePost(){
+    $csrf = new Omeka_Form_SessionCsrf;
+    if (!$csrf->isValid($_POST))
+      die('ERROR');
+
+    return $csrf;
+  }
 
 }

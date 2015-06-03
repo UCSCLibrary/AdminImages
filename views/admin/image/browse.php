@@ -36,6 +36,7 @@ echo flash();
 </div>
 
 <form action="<?php echo admin_url('admin-images/image/delete/id/'.$image->id);?>">
+  <?php echo $this->csrf;?>
   <input value="Delete" type="submit" class="admin-image-delete" id="admin-image-delete-<?php echo $image->id; ?>">
 </form>
 </li>
