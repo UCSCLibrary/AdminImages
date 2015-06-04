@@ -40,11 +40,12 @@ class AdminImages_Url_Ingester extends Omeka_File_Ingest_Url
                 }
             
             } catch (Omeka_File_Ingest_InvalidException $e) {
+/*
                 if ($this->_ignoreIngestErrors()) {
                     $this->_logException($e);
                     continue;
                 } 
-                
+*/              
                 // If not suppressed, rethrow it.
                 throw $e;
             }
