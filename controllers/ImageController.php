@@ -25,6 +25,19 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
   {
       require_once(dirname(dirname(__FILE__))."/classes/AdminImage.php");
       $this->view->csrf = new Omeka_Form_SessionCsrf;
+
+
+      if($this->getRequest()->isPost()){
+          $this->_validatePost();
+          require_once(dirname(dirname(__FILE__)).'/classes/AdminImage.php');
+          if( ! $id = $this->getParam('image_id') )
+              die('error');
+          $image = AdminImage::findById($id);
+          $image->delete();
+          $this->_helper->FlashMessenger->addMessage('Image deleted successfully','success');
+      }
+
+
       $this->view->images = AdminImage::FindAll();
   }
 
@@ -48,17 +61,6 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
     }
     if($successMessage)
         $flashMessenger->addMessage($successMessage,'success');
-  }
-
-  public function deleteAction() {
-    $this->_validatePost();
-      require_once(dirname(dirname(__FILE__)).'/classes/AdminImage.php');
-      if( ! $id = $this->getParam('id') )
-          die('error');
-      $image = AdminImage::findById($id);
-      $image->delete();
-      $this->_helper->FlashMessenger->addMessage('Image deleted successfully','success');
-      $this->_helper->redirector('browse');
   }
 
   private function _processNewFile()
