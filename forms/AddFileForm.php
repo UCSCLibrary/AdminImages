@@ -75,7 +75,7 @@ class Admin_Images_Add_Form extends Omeka_Form
 					       )
 			  );
 
-        if(!version_compare(OMEKA_VERSION,'2.2.1') >= 0)
+        if(version_compare(OMEKA_VERSION,'2.2.1') >= 0)
             $this->addElement('hash','csrf_token');
 
         // Submit:
