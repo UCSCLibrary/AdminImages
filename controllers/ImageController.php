@@ -26,9 +26,9 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
       require_once(dirname(dirname(__FILE__))."/classes/AdminImage.php");
 
       if(version_compare(OMEKA_VERSION,'2.2.1') >= 0)
-          $this->view->csrv = '';
-      else
           $this->view->csrf = new Omeka_Form_SessionCsrf;
+      else
+          $this->view->csrv = '';
 
       if($this->getRequest()->isPost()){
           $this->_validatePost();
