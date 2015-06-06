@@ -1,8 +1,8 @@
 jQuery(document).ready(function(){
-	console.log(jQuery("#file-label").parent().find(':file'));
+	//	console.log(jQuery("#file-label").parent().find(':file'));
         jQuery("#file-label").parent().find(':file').attr('name','file[0]');
 	jQuery("#file-label").parent().hide();
-    jQuery("#url-label").parent().hide();
+	jQuery("#url-label").parent().hide();
     /*    if(jQuery('input[name=ingesttype]:checked').val() == 'upload')
 	    jQuery("#upload-label").parent().show();
     else
