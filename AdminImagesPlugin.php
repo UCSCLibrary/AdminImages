@@ -24,7 +24,9 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
      */
     protected $_hooks = array(
         'define_acl',
-        'admin_head'
+        'admin_head',
+        'install',
+        'uninstall'
     );
 
     /**
@@ -36,6 +38,42 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
     {
       queue_css_file('admin-images');
       queue_js_file('admin-images');
+    }
+
+    public function hookInstall($args)
+    {
+      try{
+	$sql = "
+            CREATE TABLE IF NOT EXISTS `{$this->_db->AdminImage}` (
+                `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                `title` text,
+                `alt` text,
+                `href` text,
+                `file_id` int,
+                `creator_id` int,
+                PRIMARY KEY (`id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
+	$this->_db->query($sql);
+      }catch(Exception $e) {
+	throw $e;
+      }
+    }
+
+    /**
+     * When the plugin uninstalls, delete the database tables 
+     *which store the logs
+     * 
+     * @return void
+     */
+    public function hookUninstall()
+    {
+      try{
+	$db = get_db();
+	$sql = "DROP TABLE IF EXISTS `$db->AdminImage` ";
+	$db->query($sql);
+      }catch(Exception $e) {
+	throw $e;	
+      }
     }
 
     /**

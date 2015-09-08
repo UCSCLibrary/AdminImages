@@ -31,12 +31,31 @@ class Admin_Images_Add_Form extends Omeka_Form
      */
     private function _registerElements()
     { 
+        
+        $this->addElement('text','title',array(
+            'label' => 'Image Title',
+            'description' => 'This image title will show up when users mouse over the image, and to identify it in the admin interface',
+            'order' => 1
+        ));
+
+        $this->addElement('text','alt',array(
+            'label' => 'Alt Text',
+            'description' => 'This text will display when for any reason the image has not loaded on a user\'s browser',
+            'order' => 2
+        ));
+
+        $this->addElement('text','href',array(
+            'label' => 'Link',
+            'description' => 'This optional text will automatically link the image to a given URL. You should only fill this in if the image is always associated with a single page, exhibit, or item.',
+            'order' => 3
+        ));
+
         //Upload or url:
         $this->addElement('radio', 'ingest-type', array(
             'label'         => __('Ingest Type'),
             'description'   => __('Please indicate whether you wish to upload an image from your computer or import an image from the internet by its URL.'),
 //            'value'         => 'upload',
-	    'order'         => 2,
+	    'order'         => 5,
 	    'multiOptions'       => array(
 					  'Upload'=>'Upload',
 					  'Url'=>'Url'
@@ -48,7 +67,7 @@ class Admin_Images_Add_Form extends Omeka_Form
     $this->addElement('file', 'file', array(
         'label'         => 'Upload Image:',
         'destination'   => sys_get_temp_dir(),
-	'order'         => 3,
+	'order'         => 6,
         'validators'    => array(
             array('count', true, array(
                 'min'   => 0,
@@ -71,7 +90,7 @@ class Admin_Images_Add_Form extends Omeka_Form
         $this->addElement('text', 'url', array(
 		'label'         => __('Image url'),
 		'description'   => __('The url of the image to ingest'),
-		'order'         => 4
+		'order'         => 7
 					       )
 			  );
 
@@ -81,7 +100,7 @@ class Admin_Images_Add_Form extends Omeka_Form
         // Submit:
         $this->addElement('submit', 'submit', array(
 	    'label' => __('Import Image'),
-	    'order' => 6
+	    'order' => 8
         ));
     }
 }

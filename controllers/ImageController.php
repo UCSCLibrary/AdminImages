@@ -23,8 +23,6 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
 
   public function browseAction()
   {
-      require_once(dirname(dirname(__FILE__))."/classes/AdminImage.php");
-
       if(version_compare(OMEKA_VERSION,'2.2.1') >= 0)
           $this->view->csrf = new Omeka_Form_SessionCsrf;
       else
@@ -32,16 +30,14 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
 
       if($this->getRequest()->isPost()){
           $this->_validatePost();
-          require_once(dirname(dirname(__FILE__)).'/classes/AdminImage.php');
+
           if( ! $id = $this->getParam('image_id') )
               die('error');
-          $image = AdminImage::findById($id);
+          $image = get_record_by_id("AdminImage",$id);
           $image->delete();
           $this->_helper->FlashMessenger->addMessage('Image deleted successfully','success');
       }
-
-
-      $this->view->images = AdminImage::FindAll();
+      $this->view->images = get_db()->getTable('AdminImage')->findAll();
   }
 
   public function addAction() 
@@ -49,14 +45,15 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
     $flashMessenger = $this->_helper->FlashMessenger;
     $successMessage = false;
     require_once(dirname(dirname(__FILE__))."/forms/AddFileForm.php");
+    require_once(dirname(dirname(__FILE__))."/models/AdminImage.php");
     $this->view->form = new Admin_Images_Add_Form();
     try{
       if ($this->getRequest()->isPost()){
-          if($response = $this->view->form->isValid($this->getRequest()->getPost())){
-              $successMessage = $this->_processNewFile();
+          if($this->view->form->isValid($this->getRequest()->getPost())){
+              $successMessage = AdminImage::CreateImage();
               $this->_helper->redirector('browse');
           }else{ 
-              $flashMessenger->addMessage('Unfortunately there was an error importing your image. '.$response,'error');
+              $flashMessenger->addMessage('Unfortunately there was an error importing your image. ','error');
           } 
       }
     } catch (Exception $e){
@@ -66,53 +63,20 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
         $flashMessenger->addMessage($successMessage,'success');
   }
 
-  private function _processNewFile()
-  {
-      require_once(dirname(dirname(__FILE__))."/classes/AdminImages_Upload_Ingester.php");
-      require_once(dirname(dirname(__FILE__))."/classes/AdminImages_Url_Ingester.php");
-      
-      $fileinfo = $_POST['ingesttype']==='Url' ? $_POST['url'] : null;
-
-      $ingesterClass = 'AdminImages_'.$_POST['ingesttype'].'_Ingester';
-      $ingester = new $ingesterClass;
-      $this->_addIngestValidators($ingester);
-      $files = $ingester->itemlessIngest($fileinfo);
-      foreach($files as $file) {
-          $file->item_id=0;
-          $file->save();
-      }
-      return ("File processed successfully");
-  }
-
-    /**
-     * Add the default validators for ingested files.  
-     * 
-     * The default validators are whitelists for file extensions and MIME types,
-     * and those lists can be configured via the admin settings form.
-     * 
-     * These default validators can be disabled by the 'disable_default_file_validation'
-     * flag in the settings panel.
-     * 
-     * Plugins can add/remove/modify validators via the 'file_ingest_validators'
-     * filter.
-     * 
-     * @param Omeka_File_Ingest_AbstractIngest $ingester
-     * @return void
-     */
-    protected function _addIngestValidators(Omeka_File_Ingest_AbstractIngest $ingester)
-    {    
-        $validators = get_option(File::DISABLE_DEFAULT_VALIDATION_OPTION) 
-                    ? array()
-                    : array(
-                        'extension whitelist'=> new Omeka_Validate_File_Extension,
-                        'MIME type whitelist'=> new Omeka_Validate_File_MimeType);
+    private function _processNewFile()
+    {
+        require_once(dirname(dirname(__FILE__))."/classes/AdminImages_".$_POST['ingesttype'].".php");
         
-        $validators = apply_filters('file_ingest_validators', $validators);
-        
-        // Build the default validators.
-        foreach ($validators as $validator) {
-            $ingester->addValidator($validator);
+        $ingesterClass = 'AdminImages_'.$_POST['ingesttype'].'_Ingester';
+        $ingester = new $ingesterClass;
+        $this->_addIngestValidators($ingester);
+        $fileinfo = $_POST['ingesttype']==='Url' ? $_POST['url'] : null;
+        $files = $ingester->itemlessIngest($fileinfo);
+        foreach($files as $file) {
+            $file->item_id=0;
+            $file->save();
         }
+        return ("File processed successfully");
     }
     
     
@@ -122,7 +86,6 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
     $csrf = new Omeka_Form_SessionCsrf;
     if (!$csrf->isValid($_POST))
       die('ERROR');
-
     return $csrf;
   }
 
