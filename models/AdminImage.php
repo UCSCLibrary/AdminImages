@@ -128,11 +128,17 @@ class AdminImage extends Omeka_Record_AbstractRecord
             $file->save();
             $image->file_id = $file->id;
         }
-        print_r($image);
-        echo "saving";
-        $image->save();
-        echo "saved";
-        return ("File processed successfully");
+         $image->save();
+         return ("File processed successfully");
+    }   
+
+    public static function EditImage($image_id){
+        $image = get_record_by_id("AdminImage",$image_id);
+        $image->title = isset($_POST['title']) ? $_POST['title']: $image->title;
+        $image->alt = isset($_POST['alt']) ? $_POST['alt']:  $image->alt;
+        $image->href = isset($_POST['href']) ? $_POST['href']:  $image->href;
+         $image->save();
+         return ("File processed successfully");
     }   
 }
 ?>

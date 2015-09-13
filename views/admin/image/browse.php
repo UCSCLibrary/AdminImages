@@ -35,7 +35,18 @@ echo flash();
           <?php echo $image->linkToImage();?>
         </div>
 
-        <form method="post">
+        <div class="admin-image-meta">
+          <label>Alt text:</label>
+          <?php echo $image->alt; ?>
+        </div>
+
+        <div class="admin-image-meta">
+          <label>Image default link:</label>
+          <?php echo $image->href; ?>
+        </div>
+
+          <a href="<?php echo(admin_url('admin-images/image/edit/id/').$image->id); ?>"><button>Edit</button></a>
+        <form method="post"  action="<?php echo admin_url('admin-images/image/delete/id/').$image->id; ?>">
           <?php echo $this->csrf;?>
           <input type="hidden" name="image_id" value="<?php echo $image->id;?>" />
           <input value="Delete"  type="submit" class="admin-image-delete" name="delete-button" id="admin-image-delete-<?php echo $image->id; ?>">
