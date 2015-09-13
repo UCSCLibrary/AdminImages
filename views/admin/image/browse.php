@@ -13,44 +13,48 @@ echo flash();
   <ul id="admin-images-list">
     <?php foreach($images as $image) : ?>
       <li class="admin-image">
-        <label><?php echo $image->title ? $image->title : $image->getOriginalFilename(); ?></label>
-
         <table>
           <tr>
             <td>Original:</td>
-            <td><?php echo $image->getUrl('original');?></td>
+            <td><a href="<?php echo $image->getUrl('original');?>"><?php echo $image->getUrl('original');?></a></td>
           </tr><tr>
             <td>Fullsize:</td>
-            <td><?php echo $image->getUrl('fullsize');?></td>
+            <td><a href="<?php echo $image->getUrl('fullsize');?>"><?php echo $image->getUrl('fullsize');?></a></td>
           </tr><tr>
             <td>Square Thumbnail:</td>
-            <td><?php echo $image->getUrl('square_thumbnail');?></td>
+            <td><a href="<?php echo $image->getUrl('square_thumbnail');?>"><?php echo $image->getUrl('square_thumbnail');?></a></td>
           </tr><tr>
             <td>Thumbnail:</td>
-            <td><?php echo $image->getUrl('thumbnail');?></td>
+            <td><a href="<?php echo $image->getUrl('thumbnail');?>"><?php echo $image->getUrl('thumbnail');?></a></td>
           </tr>
         </table>
 
         <div class="admin-image-thumb">
-          <?php echo $image->linkToImage();?>
-        </div>
+          <?php echo $image->linkToImage('fullsize');?>
+        
+          <div class="admin-image-meta">
+            Title:
+            <?php echo $image->title; ?>
+          </div>
 
-        <div class="admin-image-meta">
-          <label>Alt text:</label>
-          <?php echo $image->alt; ?>
-        </div>
+          <div class="admin-image-meta">
+            Alt text:
+            <?php echo $image->alt; ?>
+          </div>
 
-        <div class="admin-image-meta">
-          <label>Image default link:</label>
-          <?php echo $image->href; ?>
-        </div>
+          <div class="admin-image-meta">
+            Image default link:
+            <?php echo $image->href; ?>
+          </div>
 
-          <a href="<?php echo(admin_url('admin-images/image/edit/id/').$image->id); ?>"><button>Edit</button></a>
-        <form method="post"  action="<?php echo admin_url('admin-images/image/delete/id/').$image->id; ?>">
-          <?php echo $this->csrf;?>
-          <input type="hidden" name="image_id" value="<?php echo $image->id;?>" />
-          <input value="Delete"  type="submit" class="admin-image-delete" name="delete-button" id="admin-image-delete-<?php echo $image->id; ?>">
-        </form>
+          <a class="edit" href="<?php echo(admin_url('admin-images/image/edit/id/').$image->id); ?>"><button>Edit</button></a>
+          <form method="post"  action="<?php echo admin_url('admin-images/image/delete/id/').$image->id; ?>">
+            <?php echo $this->csrf;?>
+            <input type="hidden" name="image_id" value="<?php echo $image->id;?>" />
+            <input value="Delete"  type="submit" class="admin-image-delete" name="delete-button" id="admin-image-delete-<?php echo $image->id; ?>">
+          </form>
+
+        </div>
       </li>
     <?php endforeach; ?>
   </ul>

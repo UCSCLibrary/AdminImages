@@ -39,7 +39,6 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
       queue_css_file('admin-images');
       queue_js_file('admin-images');
     }
-
     public function hookInstall($args)
     {
       try{
