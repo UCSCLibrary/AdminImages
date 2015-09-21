@@ -54,7 +54,7 @@ class Admin_Images_Edit_Form extends Omeka_Form
 
         // Submit:
         $this->addElement('submit', 'submit', array(
-	    'label' => __('Edit Admin Image'),
+	    'label' => __('Save'),
 	    'order' => 8
         ));
     }
