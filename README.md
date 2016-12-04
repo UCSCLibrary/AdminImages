@@ -1,4 +1,4 @@
-# AdminImages
+# Admin Images
 This Omeka 2.0+ plugin allows administrators to upload images not attached to items, for use in carousels and pages. You may need to embed static images in the html of your Omeka site; this plugin allows you to host those images on your Omeka installation without creating empty Item records to contain the static image files.
 
 ## Usage
