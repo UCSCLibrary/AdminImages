@@ -10,6 +10,13 @@ echo flash();
 <?php if(empty($images)) : ?>
   <h3>No admin images have been uploaded yet.</h3>
 <?php else:?>
+  <h3>Instructions</h3>
+  <h4>Shortcodes</h4>
+  <p>If you are creating a simple page or otherwise entering HTML into omeka through your browser, you can use the shortcode "[admin_image id=999,size='fullsize']" to display your admin image.</p>
+  <h4>View Helpers</h4>
+  <p>If you are creating a new view for your theme or plugin, you can use the view helper to display an Admin Image tag as follows: <code> echo $view->adminImageTag($image_id,$size="fullsize"); </code> .</p>
+  <h3>Images</h3>
+  <p></p>
   <ul id="admin-images-list">
     <?php foreach($images as $image) : ?>
       <li class="admin-image">
@@ -31,6 +38,12 @@ echo flash();
 
         <div class="admin-image-thumb">
           <?php echo $image->linkToImage('fullsize');?>
+        
+          <div class="admin-image-meta">
+            Image ID:
+            <?php echo $image->id; ?>
+          </div>
+
         
           <div class="admin-image-meta">
             Title:

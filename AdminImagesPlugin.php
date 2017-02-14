@@ -18,6 +18,19 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
     {
         return $this->name;
     }
+
+
+    public function hookInitialize()
+    {
+        add_shortcode('admin_image','admin_image_tag_shortcode');
+        get_view()->addHelperPath(dirname(__FILE__) . '/views/helpers', 'PluginName_View_Helper_');
+    }
+
+    function admin_image_tag_shortcode($args, $view)
+    {
+        $size = isset($args['size']) ? $args['size'] : 'fullsize';
+        return $view->adminImageTag($args['id'],$size);
+    }
     
     /**
      * @var array Hooks for the plugin.
@@ -26,7 +39,8 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
         'define_acl',
         'admin_head',
         'install',
-        'uninstall'
+        'uninstall',
+        'initialize'
     );
 
     /**
