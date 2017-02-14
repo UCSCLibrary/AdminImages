@@ -71,13 +71,10 @@ class AdminImages_Upload_Ingester extends Omeka_File_Ingest_Upload
         try {
             $file->original_filename = $oldFilename;
             $file->mime_type = $mimeType;
-            
             $file->setDefaults($newFilePath);
-            
             if ($elementMetadata) {
                 $file->addElementTextsByArray($elementMetadata);
             }
-            
         } catch(Exception $e) {
             if (!$file->exists()) {
                 $file->unlinkFile();
@@ -86,8 +83,6 @@ class AdminImages_Upload_Ingester extends Omeka_File_Ingest_Upload
         }
         return $file;
     }
-    
-    
 }
 
 

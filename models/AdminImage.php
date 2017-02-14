@@ -101,7 +101,6 @@ class AdminImage extends Omeka_Record_AbstractRecord
                         'MIME type whitelist'=> new Omeka_Validate_File_MimeType);
         
         $validators = apply_filters('file_ingest_validators', $validators);
-        
         // Build the default validators.
         foreach ($validators as $validator) {
             $ingester->addValidator($validator);
