@@ -67,13 +67,15 @@ class AdminImage extends Omeka_Record_AbstractRecord
 
     public function getUrl($size="thumbnail") {
         $this->_retrieveFile();
+        $filename = pathinfo($this->_file->filename, PATHINFO_FILENAME);
+        $ext = pathinfo($this->_file->filename, PATHINFO_EXTENSION);
         switch($size) {
             case ("thumbnail"):
-                return str_replace("/admin","",absolute_url('files/thumbnails/'.$this->_file->filename));
+              return str_replace("/admin","",absolute_url('files/thumbnails/'.$filename.".jpg"));
             case ("fullsize"):
-                return str_replace("/admin","",absolute_url('files/fullsize/'.$this->_file->filename));
+                return str_replace("/admin","",absolute_url('files/fullsize/'.$filename.'.jpg'));
             case ("square_thumbnail"):
-                return str_replace("/admin","",absolute_url('files/square_thumbnails/'.$this->_file->filename));
+                return str_replace("/admin","",absolute_url('files/square_thumbnails/'.$filename.'.jpg'));
             case ("original"):
                  return str_replace("/admin","",absolute_url('files/original/'.$this->_file->filename));
         }
