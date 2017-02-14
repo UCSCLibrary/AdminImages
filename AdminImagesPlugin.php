@@ -23,13 +23,8 @@ class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
     public function hookInitialize()
     {
         add_shortcode('admin_image','admin_image_tag_shortcode');
-        get_view()->addHelperPath(dirname(__FILE__) . '/views/helpers', 'PluginName_View_Helper_');
-    }
-
-    function admin_image_tag_shortcode($args, $view)
-    {
-        $size = isset($args['size']) ? $args['size'] : 'fullsize';
-        return $view->adminImageTag($args['id'],$size);
+        require_once(dirname(__FILE__)."/helpers/AdminImageFunctions.php");
+        get_view()->addHelperPath(dirname(__FILE__) . '/views/helpers/', 'AdminImages_View_Helper_');
     }
     
     /**

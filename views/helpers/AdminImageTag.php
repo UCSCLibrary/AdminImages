@@ -1,5 +1,5 @@
 <?php 
-class PluginName_View_Helper_AdminImageTag extends Zend_View_Helper_Abstract
+class AdminImages_View_Helper_AdminImageTag extends Zend_View_Helper_Abstract
 {
     public function adminImageTag($id,$size="fullsize")
     {
