@@ -11,4 +11,4 @@ If you are creating a custom view for your theme, you can embed an Admin Image u
 The ID of each admin image must be inserted in the code above, and is provided by the AdminImages plugin when you upload the image.
 
 ## Feedback
-If you use this plugin, please take a moment to submit feedback about your experience, so we can keep making Omeka better: [User Survey] (https://docs.google.com/forms/d/1sOFIOM7SqT9PjKiY0m-xbo3Gxm_Fzr6eg_fduGMEfzE/viewform?usp=send_form "User Survey")
+If you use this plugin, please take a moment to submit feedback about your experience, so we can keep making Omeka better: [User Survey](https://docs.google.com/forms/d/1sOFIOM7SqT9PjKiY0m-xbo3Gxm_Fzr6eg_fduGMEfzE/viewform?usp=send_form "User Survey")
