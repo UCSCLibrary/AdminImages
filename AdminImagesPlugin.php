@@ -12,7 +12,7 @@
  * 
  * @package AdminImages
  */
-class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
+class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
 {
     public function __toString() 
     {
