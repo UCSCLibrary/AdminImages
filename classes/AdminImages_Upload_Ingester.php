@@ -84,7 +84,3 @@ class AdminImages_Upload_Ingester extends Omeka_File_Ingest_Upload
         return $file;
     }
 }
-
-
-
-?>

@@ -140,6 +140,5 @@ class AdminImage extends Omeka_Record_AbstractRecord
         $image->href = isset($_POST['href']) ? $_POST['href']:  $image->href;
          $image->save();
          return ("File processed successfully");
-    }   
+    }
 }
-?>

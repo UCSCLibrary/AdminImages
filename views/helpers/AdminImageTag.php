@@ -1,4 +1,4 @@
-<?php 
+<?php
 class AdminImages_View_Helper_AdminImageTag extends Zend_View_Helper_Abstract
 {
     public function adminImageTag($id,$size="fullsize")
@@ -13,6 +13,3 @@ class AdminImages_View_Helper_AdminImageTag extends Zend_View_Helper_Abstract
         return $markup;
     }
 }
-?>
-
-

@@ -54,4 +54,3 @@ class AdminImageFile
         return $image;
     }
 }
-?>
