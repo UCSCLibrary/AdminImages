@@ -96,23 +96,6 @@ class AdminImages_ImageController extends Omeka_Controller_AbstractActionControl
             $flashMessenger->addMessage($successMessage,'success');
     }
 
-    private function _processNewFile()
-    {
-        require_once(dirname(dirname(__FILE__))."/classes/AdminImages_".$_POST['ingesttype'].".php");
-        
-        $ingesterClass = 'AdminImages_'.$_POST['ingesttype'].'_Ingester';
-        $ingester = new $ingesterClass;
-        $this->_addIngestValidators($ingester);
-        $fileinfo = $_POST['ingesttype']==='Url' ? $_POST['url'] : null;
-        $files = $ingester->itemlessIngest($fileinfo);
-        foreach($files as $file) {
-            $file->item_id=0;
-            $file->save();
-        }
-        return ("File processed successfully");
-    }
-    
-    
     private function _validatePost(){
         if(version_compare(OMEKA_VERSION,'2.2.1') >= 0)
             return true;
