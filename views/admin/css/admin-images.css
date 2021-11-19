@@ -1,75 +1,19 @@
-.admin-images #content form div {
-    clear: left;
+.admin-image-info img {
+    width: 100px !important;
+    vertical-align: middle !important;
+    float: left; 
+    margin: 0 10px 0 0; 
 }
 
-.admin-images #admin-images-list {
-  list-style-type: none;	
+.admin-image-info a:not(:last-child) {
+    margin-right: .5em;
 }
 
-.admin-images #admin-images-list li {  
-    width:99%;
-    border: 1px solid black;
-    margin-bottom: 25px;
-    overflow: hidden;
-    padding: 5px;
+#admin-images-list th.id, #admin-images-list td.id {
+	width: 1%;
+	text-align: center;
 }
 
-.admin-images #admin-images-list li div.admin-image-meta {
-    width: 200px;
-    opacity: 0.8;
-    background: white;
-    line-height: 1.3em;
-}
-
-.admin-images ul#admin-images-list {
-    padding-left:0px;
-}
-.admin-images #admin-images-list li td {
-    padding:0px;
-}
-.admin-images #admin-images-list li table {
-    width: 400px;
-    border-collapse: collapse;
-    position:absolute;
-    background-color:white;
-    opacity:0.8;
-    right:10px;
-//    top:10px;
-    z-index:2;
-}
-
-.admin-images #admin-images-list li form {
-    width: 200px;
-    text-align: center;
-}
-
-.admin-images .admin-image-thumb {
-    width:200px;
-    position:relative;
-    height:175px;
-}
-.admin-images div.admin-image-thumb a {
-    position:absolute;
-    z-index:0;
-}
-.admin-images div.admin-image-thumb a.edit {
-    z-index:2;
-    bottom:5px;
-    left:5px;
-}
-.admin-images div.admin-image-thumb form {
-    position:absolute;
-    z-index:2;
-    bottom:5px;
-    left:45px;
-    margin:0px;
-}
-.admin-images div.admin-image-thumb input {
-    margin:0px;
-}
-.admin-images div.admin-image-thumb button {
-    margin:0px;
-}
-.admin-images div.admin-image-thumb img {
-    height:175px;
+input[type=file] {
+	margin: 0 0 10px 0;
 }
