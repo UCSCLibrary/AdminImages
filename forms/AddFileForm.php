@@ -56,8 +56,8 @@ class Admin_Images_Add_Form extends Omeka_Form_Admin
             'description'   => __('Choose whether to upload the image from a local source or import it from the internet by its URL.'),
             'order'         => 4,
             'multiOptions'  => array(
-                'Upload'    => 'Upload from local source',
-                'Url'       => 'Import from the internet'
+                'Upload'    => __('Upload from local source'),
+                'Url'       => __('Import from the internet')
             )
         ));
 
