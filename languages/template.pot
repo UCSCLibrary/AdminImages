@@ -1,0 +1,197 @@
+# Translation for the AdminImages plugin for Omeka.
+# Copyright (C) 2021 Daniele BINAGHI
+# This file is distributed under the same license as the Omeka package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Locale\n"
+"Report-Msgid-Bugs-To: http://github.com/UCSCLibrary/AdminImages/issues\n"
+"POT-Creation-Date: 2021-11-19 6:49-0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: AdminImagesPlugin.php:111
+msgid "Admin Images"
+msgstr ""
+
+#: IndexController.php:158
+msgid "The image was successfully added."
+msgstr ""
+
+#: IndexController.php:161
+#: IndexController.php:221
+msgid "One or more errors occurred while adding the image. Please correct them and try again."
+msgstr ""
+
+#: IndexController.php:180
+#: IndexController.php:238
+msgid "The image was not found in the repository."
+msgstr ""
+
+#: IndexController.php:218
+msgid "The image #%s was successfully edited."
+msgstr ""
+
+#: IndexController.php:236
+msgid "The image #%s was successfully deleted."
+msgstr ""
+
+#: IndexController.php:245
+msgid "This will permanently delete this image, but not the shortcodes and code that might have been added."
+msgstr ""
+
+#: IndexController.php:254
+msgid "An error occurred."
+msgstr ""
+
+#: AddFileForm.php:34
+#: EditFileForm.php:34
+#: browse.php:17
+msgid "Title"
+msgstr ""
+
+#: AddFileForm.php:35
+#: EditFileForm.php:35
+msgid "The title of the image. Will be used as tooltip on mouse-over, and to identify the image in the Admin interface."
+msgstr ""
+
+#: AddFileForm.php:41
+#: EditFileForm.php:41
+msgid "Alt Text"
+msgstr ""
+
+#: AddFileForm.php:42
+#: EditFileForm.php:42
+msgid "The alternative text displayed when the image does not get loaded on a user's browser."
+msgstr ""
+
+#: AddFileForm.php:48
+#: EditFileForm.php:48
+#: browse.php:18
+msgid "Permalink"
+msgstr ""
+
+#: AddFileForm.php:49
+#: EditFileForm.php:49
+msgid "The URL to which the image is linking to. To be used only if the image is permanently associated with a Simple Page, Item, Collection or Exhibit."
+msgstr ""
+
+#: AddFileForm.php:48
+msgid "Permalink"
+msgstr ""
+
+#: AddFileForm.php:49
+msgid "The URL to which the image is linking to. To be used only if the image is permanently associated with a Simple Page, Item, Collection or Exhibit."
+msgstr ""
+
+#: AddFileForm.php:55
+msgid "Ingest Type"
+msgstr ""
+
+#: AddFileForm.php:56
+msgid "Choose whether to upload the image from a local source or import it from the internet by its URL."
+msgstr ""
+
+#: AddFileForm.php:59
+msgid "Upload from local source"
+msgstr ""
+
+#: AddFileForm.php:60
+msgid "Import from the internet"
+msgstr ""
+
+#: AdminImage.php:132
+#: AdminImage.php:141
+msgid "File successfully processed."
+msgstr ""
+
+#: add.php:3
+msgid "Add Admin Image"
+msgstr ""
+
+#: edit.php:3
+msgid "Edit Admin Image #%s"
+msgstr ""
+
+#: browse.php:1
+msgid "Browse Admin Images"
+msgstr ""
+
+#: browse.php:1
+msgid "(%s total)"
+msgstr ""
+
+#: browse.php:5
+#: browse.php:86
+msgid "Add an Image"
+msgstr ""
+
+#: browse.php:19
+msgid "Added by"
+msgstr ""
+
+#: browse.php:41
+msgid "Edit"
+msgstr ""
+
+#: browse.php:42
+msgid "Delete"
+msgstr ""
+
+#: browse.php:48
+msgid "Width"
+msgstr ""
+
+#: browse.php:49
+msgid "Height"
+msgstr ""
+
+#: browse.php:50
+msgid "MIME type"
+msgstr ""
+
+#: browse.php:53
+msgid "Alt text"
+msgstr ""
+
+#: browse.php:54
+msgid "Direct links"
+msgstr ""
+
+#: browse.php:55
+msgid "Original"
+msgstr ""
+
+#: browse.php:56
+msgid "Fullsize"
+msgstr ""
+
+#: browse.php:57
+msgid "Thumbnail"
+msgstr ""
+
+#: browse.php:58
+msgid "Square thumbnail"
+msgstr ""
+
+#: browse.php:79
+msgid "Details"
+msgstr ""
+
+#: browse.php:80
+msgid "Show Details"
+msgstr ""
+
+#: browse.php:81
+msgid "Hide Details"
+msgstr ""
+
+#: browse.php:86
+msgid "There seems to be no Admin Images stored in the repository."
+msgstr ""
