@@ -1,11 +1,12 @@
 <?php
+    $head = array('bodyclass' => 'admin-images primary', 
+                  'title' => html_escape(__('Add Admin Image'))
+    );
+    echo head($head);
 
-$head = array('bodyclass' => 'admin-images primary', 
-              'title' => html_escape(__('Admin Images | Add')));
-echo head($head);
-echo flash(); ?>
-<h2>Add New Admin Image</h2>
+    echo flash(); 
+?>
 
-<?php echo $form;?>
+<?php echo $form; ?>
 
 <?php echo foot(); ?>
