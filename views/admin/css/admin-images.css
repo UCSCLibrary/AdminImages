@@ -17,3 +17,19 @@
 input[type=file] {
     margin: 0 0 10px 0;
 }
+
+/* The following is a css hack to visually fix Delete */
+/* Image button positioning issue in Edit Image page  */ 
+#save .field {
+	border-top : 0;
+	padding-top : 0;
+}
+
+#save .inputs {
+	margin-bottom: 0;
+}
+
+#delete-label {
+	display: none;
+}
+/* End of hack */
