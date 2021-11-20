@@ -186,34 +186,38 @@ class AdminImages_IndexController extends Omeka_Controller_AbstractActionControl
         $this->view->image = $image;
         $this->view->form = new Admin_Images_Edit_Form(array('type' => 'admin_images_edit'));
         $this->view->form->addElement('hidden', 'image_id', $image->id);
-		$this->view->form->addElementToEditGroup('text', 'foo', array(
-			'style' => 'visibility: hidden',
-			'decorators' => array(
-				array(
-					array('img' => 'HtmlTag'), 
-					array(
-						'tag' => 'img',
-						'openOnly' => true,
-						'src' => $image->getUrl('thumbnail'),
-						'style' => 'margin-bottom: 20px'
-					)
-				)
-			)
-		));
-		
-		$this->view->form->addElementToSaveGroup('note', 'delete', array(
-			'value'	=> '<a href="' . admin_url('admin-images/index/delete-confirm/id/'). $image->id . '" class="delete-image delete-confirm button red">' . __('Delete Image') . '</a>',
-            'order'	=> 6
+        $this->view->form->addElementToEditGroup('text', 'foo', array(
+            'style' => 'visibility: hidden',
+            'decorators' => array(
+                array(
+                    array('img' => 'HtmlTag'), 
+                    array(
+                        'tag' => 'img',
+                        'openOnly' => true,
+                        'src' => $image->getUrl('thumbnail'),
+                        'style' => 'margin-bottom: 20px'
+                    )
+                )
+            )
+        ));
+        
+        $this->view->form->addElementToSaveGroup('note', 'delete', array(
+            'value'    => '<a href="' . admin_url('admin-images/index/delete-confirm/id/'). $image->id . '" class="delete-image delete-confirm button red">' . __('Delete Image') . '</a>',
+            'order'    => 6
         ));
 
+        $url = $image->getUrl('original');
+        $details = '';
+        if ($size = getimagesize($url)) $details = '<span class="explanation">' . __('Width') . ': <b>' . $size[0] . "px</b> | " . __('Height') . ': <b>' . $size[1] . "px</b> | ". __('MIME Type') . ': <b>' . $size['mime'] . '</b></span>';
         $this->view->form->populate(array('title' => $image->title,
                                           'alt' => $image->alt,
-                                          'href' => $image->href
+                                          'href' => $image->href,
+                                          'details' => $details
         ));
 
         try {
             if ($this->getRequest()->isPost()) {
-				if ($this->view->form->isValid($this->getRequest()->getPost())) {
+                if ($this->view->form->isValid($this->getRequest()->getPost())) {
                     $successMessage = AdminImage::EditImage($image->id);
                     $flashMessenger->addMessage(__('The image #%s was successfully edited.', $image->id), 'success');
                     $this->_helper->redirector('browse');
