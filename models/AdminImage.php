@@ -122,7 +122,7 @@ class AdminImage extends Omeka_Record_AbstractRecord
         $ingesterClass = 'AdminImages_'.$_POST['ingesttype'].'_Ingester';
         $ingester = new $ingesterClass;
         self::_AddIngestValidators($ingester);
-        $url = $_POST['ingesttype']==='Url' ? $_POST['url'] : null;
+        $url = $_POST['ingesttype']==='Url' ? $_POST['url'] : 'file';
         $files = $ingester->itemlessIngest($url);
         foreach($files as $file) {
             $file->item_id=0;
