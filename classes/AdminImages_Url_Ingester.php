@@ -86,6 +86,5 @@ class AdminImages_Url_Ingester extends Omeka_File_Ingest_Url
             throw $e;
         }
         return $file;
-    }   
+    }
 }
-?>
