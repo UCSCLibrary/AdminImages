@@ -15,7 +15,7 @@
                 class="' . $class . '"
             />';
 			
-			if ($image->href != '') $markup = '<a href="' . $image->href . '" target="_blank">' . $markup . '</a>';
+            if ($image->href != '') $markup = '<a href="' . $image->href . '" target="_blank">' . $markup . '</a>';
 			
             return $markup;
         }
