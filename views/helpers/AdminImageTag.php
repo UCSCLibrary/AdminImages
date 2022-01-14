@@ -10,10 +10,13 @@
             <img  
                 id="' . $image->id . '"
                 src="' . $image->getUrl($size) . '"
-                alt="' . $image->alt . '"
+                alt="' . ($image->alt != '' ? $image->alt : 'Admin Image') . '"
                 title="' . $image->title . '"
                 class="' . $class . '"
             />';
+			
+			if ($image->href != '') $markup = '<a href="' . $image->href . '" target="_blank">' . $markup . '</a>';
+			
             return $markup;
         }
     }
