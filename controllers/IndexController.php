@@ -202,7 +202,7 @@ class AdminImages_IndexController extends Omeka_Controller_AbstractActionControl
         ));
         
         $this->view->form->addElementToSaveGroup('note', 'delete', array(
-            'value'    => '<a href="' . admin_url('admin-images/index/delete-confirm/id/'). $image->id . '" class="delete-image delete-confirm button red">' . __('Delete Image') . '</a>',
+            'value'    => '<a href="' . admin_url('admin-images/index/delete-confirm/id/'). $image->id . '" class="delete-confirm big red button">' . __('Delete Image') . '</a>',
             'order'    => 6
         ));
 
