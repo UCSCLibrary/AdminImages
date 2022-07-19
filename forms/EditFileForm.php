@@ -10,9 +10,8 @@
 /**
  * AdminImages Add form class
  */
-class Admin_Images_Edit_Form extends Omeka_Form
+class Admin_Images_Edit_Form extends Omeka_Form_Admin
 {
-
     /**
      * Construct the import form.
      *
@@ -31,31 +30,33 @@ class Admin_Images_Edit_Form extends Omeka_Form
      */
     private function _registerElements()
     { 
-        $this->addElement('text','title',array(
-            'label' => 'Image Title',
-            'description' => 'This image title will show up when users mouse over the image, and to identify it in the admin interface',
-            'order' => 1
+        $this->addElementToEditGroup('note', 'details', array(
+            'label'         => __('Details'),
+            'order'         => 1
+        ));
+        
+        $this->addElementToEditGroup('text', 'title', array(
+            'label'         => __('Title'),
+            'description'   => __('The title of the image. Will be used as tooltip on mouse-over, and to identify the image in the Admin interface.'),
+            'order'         => 2,
+            'required'      => true
         ));
 
-        $this->addElement('text','alt',array(
-            'label' => 'Alt Text',
-            'description' => 'This text will display when for any reason the image has not loaded on a user\'s browser',
-            'order' => 2
+        $this->addElementToEditGroup('text', 'alt', array(
+            'label'         => __('Alt Text'),
+            'description'   => __('The alternative text displayed when the image does not get loaded on a user\'s browser.'),
+            'order'         => 3,
+            'required'      => true
         ));
 
-        $this->addElement('text','href',array(
-            'label' => 'Link',
-            'description' => 'This optional text will automatically link the image to a given URL. You should only fill this in if the image is always associated with a single page, exhibit, or item.',
-            'order' => 3
+        $this->addElementToEditGroup('text', 'href', array(
+            'label'         => __('Permalink'),
+            'description'   => __('The URL to which the image is linking to. To be used only if the image is permanently associated with a Simple Page, Item, Collection or Exhibit.'),
+            'order'         => 4
         ));
 
-        if(version_compare(OMEKA_VERSION,'2.2.1') >= 0)
-            $this->addElement('hash','csrf_token');
-
-        // Submit:
-        $this->addElement('submit', 'submit', array(
-	    'label' => __('Save'),
-	    'order' => 8
-        ));
+        if (version_compare(OMEKA_VERSION, '2.2.1') >= 0) {
+            $this->addElement('hash', 'csrf_token');
+        }
     }
 }

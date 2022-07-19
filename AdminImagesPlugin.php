@@ -2,8 +2,8 @@
 /**
  * AdminImages plugin
  *
- * @package     AdminImages
- * @copyright Copyright 2014 UCSC Library Digital Initiatives
+ * @package AdminImages
+ * @copyright Copyright 2014-2021 UCSC Library Digital Initiatives
  * @license http://www.gnu.org/licenses/gpl-3.0.txt GNU GPLv3
  */
 
@@ -12,30 +12,17 @@
  * 
  * @package AdminImages
  */
-class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
+class AdminImagesPlugin extends Omeka_plugin_AbstractPlugin
 {
-    public function __toString() 
-    {
-        return $this->name;
-    }
-
-
-    public function hookInitialize()
-    {
-        add_shortcode('admin_image','admin_image_tag_shortcode');
-        require_once(dirname(__FILE__)."/helpers/AdminImageFunctions.php");
-        get_view()->addHelperPath(dirname(__FILE__) . '/views/helpers/', 'AdminImages_View_Helper_');
-    }
-    
     /**
      * @var array Hooks for the plugin.
      */
     protected $_hooks = array(
-        'define_acl',
-        'admin_head',
         'install',
         'uninstall',
-        'initialize'
+        'initialize',
+        'define_acl',
+        'admin_head',
     );
 
     /**
@@ -43,28 +30,26 @@ class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
      */
     protected $_filters = array('admin_navigation_main');
 
-    public function hookAdminHead()
-    {
-      queue_css_file('admin-images');
-      queue_js_file('admin-images');
-    }
     public function hookInstall($args)
     {
-      try{
-	$sql = "
-            CREATE TABLE IF NOT EXISTS `{$this->_db->AdminImage}` (
-                `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-                `title` text,
-                `alt` text,
-                `href` text,
-                `file_id` int,
-                `creator_id` int,
-                PRIMARY KEY (`id`)
-            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
-	$this->_db->query($sql);
-      }catch(Exception $e) {
-	throw $e;
-      }
+        try{
+            $sql = "
+                CREATE TABLE IF NOT EXISTS `{$this->_db->AdminImage}` (
+                    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+                    `title` text,
+                    `alt` text,
+                    `href` text,
+                    `file_id` int,
+                    `creator_id` int,
+                    PRIMARY KEY (`id`)
+                ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+            ";
+            $this->_db->query($sql);
+        }
+
+        catch(Exception $e) {
+            throw $e;
+        }
     }
 
     /**
@@ -75,20 +60,32 @@ class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookUninstall()
     {
-      try{
-	$db = get_db();
-	$sql = "DROP TABLE IF EXISTS `$db->AdminImage` ";
-	$db->query($sql);
-      }catch(Exception $e) {
-	throw $e;	
-      }
+        try {
+            $db = get_db();
+            $sql = "DROP TABLE IF EXISTS `$db->AdminImage` ";
+            $db->query($sql);
+        }
+
+        catch(Exception $e) {
+            throw $e;    
+        }
+    }
+
+    public function hookInitialize()
+    {
+        // Add translation.
+        add_translation_source(dirname(__FILE__) . '/languages');
+
+        add_shortcode('admin_image', 'admin_image_tag_shortcode');
+        require_once(dirname(__FILE__) . "/helpers/AdminImageFunctions.php");
+        get_view()->addHelperPath(dirname(__FILE__) . '/views/helpers/', 'AdminImages_View_Helper_');
     }
 
     /**
      * Define the plugin's access control list.
      *
      * @param array $args This array contains a reference to
-     * the zend ACL under it's 'acl' key.
+     * the zend ACL under its 'acl' key.
      * @return void
      */
     public function hookDefineAcl($args)
@@ -102,6 +99,12 @@ class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
      * @param array $nav Array of links for admin nav section
      * @return array $nav Updated array of links for admin nav section
      */
+    public function hookAdminHead()
+    {
+        queue_css_file('admin-images');
+        queue_js_file('admin-images');
+    }
+
     public function filterAdminNavigationMain($nav)
     {
         $nav[] = array(
@@ -112,6 +115,4 @@ class AdminImagesPlugin extends Omeka_Plugin_AbstractPlugin
         );
         return $nav;
     }
-  
-
 }

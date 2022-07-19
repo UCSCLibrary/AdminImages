@@ -1,0 +1,17 @@
+# Translation for the AdminImages plugin for Omeka.
+# Copyright (C) 2021 Daniele BINAGHI
+# This file is distributed under the same license as the Omeka package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Locale\n"
+"Report-Msgid-Bugs-To: http://github.com/UCSCLibrary/AdminImages/issues\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
