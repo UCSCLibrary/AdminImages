@@ -16,8 +16,9 @@ An image can be uploaded either from a local or from an online source. Once inge
 
 This plugin also builds in a shortcode to be used inside pages and a view helper which can be used inside themes. 
 
-When manually entering HTML into the omeka browser interface, one can add a shortcode of the form `[admin_image id=999,size=fullsize]` to embed an Admin Image in a page. When creating a custom view for a theme, one can embed an Admin Image using the code `<?php echo $this->adminImageTag($image_id,'fullsize');?>`. 
-The ID of each admin image must be inserted in the code above, as visible in the main browse plugin page.
+When manually entering HTML into the Omeka browser interface, one can add a shortcode like `[admin_image id=999,size=fullsize]` to embed an Admin Image in a page. 
+When creating a custom view for a theme, one can embed an Admin Image using the code `<?php echo $this->adminImageTag($image_id,'fullsize');?>`. 
+The ID of each Admin Image must be inserted in the code above, as visible in the plugin's main browse page.
 
 ## Feedback
 If you use this plugin, please take a moment to submit feedback about your experience, so we can keep making Omeka better: [User Survey](https://docs.google.com/forms/d/1sOFIOM7SqT9PjKiY0m-xbo3Gxm_Fzr6eg_fduGMEfzE/viewform?usp=send_form "User Survey")
@@ -34,6 +35,7 @@ See online issues on the <a href="https://github.com/UCSCLibrary/AdminImages/iss
 This plugin is published under the <a href="https://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GNU/GPL</a>.
 
 ## Copyright
-Copyright UC Santa Cruz University Library, 2014-2021
+Copyright UC Santa Cruz University Library, 2014-2022
 
-Copyright Daniele Binaghi, 2021
+## Contribution
+Code contributed <a href="https://github.com/DBinaghi/" target="_blank">Daniele Binaghi</a>, 2021-2022
