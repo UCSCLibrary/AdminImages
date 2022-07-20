@@ -35,6 +35,6 @@ See online issues on the <a href="https://github.com/UCSCLibrary/AdminImages/iss
 This plugin is published under the <a href="https://www.gnu.org/licenses/gpl-2.0.html" target="_blank">GNU/GPL</a>.
 
 ## Copyright
-Copyright UC Santa Cruz University Library, 2014-2022
+Copyright <a href="https://github.com/UCSCLibrary" target="_blank">UC Santa Cruz University Library</a>, 2014-2022
 
 Copyright <a href="https://github.com/DBinaghi/" target="_blank">Daniele Binaghi</a>, 2021-2022
