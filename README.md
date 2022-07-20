@@ -37,5 +37,4 @@ This plugin is published under the <a href="https://www.gnu.org/licenses/gpl-2.0
 ## Copyright
 Copyright UC Santa Cruz University Library, 2014-2022
 
-## Contribution
-Code contributed <a href="https://github.com/DBinaghi/" target="_blank">Daniele Binaghi</a>, 2021-2022
+Copyright <a href="https://github.com/DBinaghi/" target="_blank">Daniele Binaghi</a>, 2021-2022
