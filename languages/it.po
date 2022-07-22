@@ -103,6 +103,10 @@ msgstr "Carica da sorgente locale"
 msgid "Import from the internet"
 msgstr "Importa da internet"
 
+#: AddFileForm.php:66
+msgid "Upload Image"
+msgstr "Carica immagine"
+
 #: AdminImage.php:132
 #: AdminImage.php:141
 msgid "File successfully processed."

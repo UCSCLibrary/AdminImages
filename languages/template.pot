@@ -103,6 +103,10 @@ msgstr ""
 msgid "Import from the internet"
 msgstr ""
 
+#: AddFileForm.php:66
+msgid "Upload Image"
+msgstr ""
+
 #: AdminImage.php:132
 #: AdminImage.php:141
 msgid "File successfully processed."
