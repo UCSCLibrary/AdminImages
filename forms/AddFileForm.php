@@ -63,7 +63,7 @@ class Admin_Images_Add_Form extends Omeka_Form_Admin
 
         //Upload:
         $this->addElementToEditGroup('file', 'file', array(
-            'label'         => __('Upload Image:'),
+            'label'         => __('Upload Image'),
             'destination'   => sys_get_temp_dir(),
             'order'         => 5,
             'validators'    => array(
