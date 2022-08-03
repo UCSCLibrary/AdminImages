@@ -47,11 +47,11 @@
                                 if ($size = getimagesize($url)) {
                                     echo "<p><strong>" . __('Width') . "</strong>: " . $size[0] . "px</p>";
                                     echo "<p><strong>" . __('Height') . "</strong>: " . $size[1] . "px</p>";
-                                    echo "<p><strong>" . __('MIME type') . ":</strong> " . $size['mime'] . "</p>";
+                                    echo "<p><strong>" . __('MIME Type') . ":</strong> " . $size['mime'] . "</p>";
                                 }
                                 $altText = $image->alt;
                                 if ($altText != '') echo "<p><strong>" . __('Alt text') . "</strong>: " . $altText . "</p>";
-                                echo "<p><strong>" . __('Direct links') . "</strong> ";
+                                echo "<p><strong>" . __('Direct links') . ":</strong> ";
                                 echo "<a href='" . $url . "' target='_blank'>" . __('Original') . "</a> ";
                                 echo "<a href='" . $image->getUrl('fullsize') . "' target='_blank'>" . __('Fullsize') . "</a> ";
                                 echo "<a href='" . $image->getUrl('thumbnail') . "' target='_blank'>" . __('Thumbnail') . "</a> ";
