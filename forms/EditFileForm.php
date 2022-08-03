@@ -30,29 +30,39 @@ class Admin_Images_Edit_Form extends Omeka_Form_Admin
      */
     private function _registerElements()
     { 
-        $this->addElementToEditGroup('note', 'details', array(
-            'label'         => __('Details'),
+        $this->addElementToEditGroup('note', 'width', array(
+            'label'         => __('Width'),
             'order'         => 1
+        ));
+        
+        $this->addElementToEditGroup('note', 'height', array(
+            'label'         => __('Height'),
+            'order'         => 2
+        ));
+        
+        $this->addElementToEditGroup('note', 'mime', array(
+            'label'         => __('MIME Type'),
+            'order'         => 3
         ));
         
         $this->addElementToEditGroup('text', 'title', array(
             'label'         => __('Title'),
             'description'   => __('The title of the image. Will be used as tooltip on mouse-over, and to identify the image in the Admin interface.'),
-            'order'         => 2,
+            'order'         => 4,
             'required'      => true
         ));
 
         $this->addElementToEditGroup('text', 'alt', array(
             'label'         => __('Alt Text'),
             'description'   => __('The alternative text displayed when the image does not get loaded on a user\'s browser.'),
-            'order'         => 3,
+            'order'         => 5,
             'required'      => true
         ));
 
         $this->addElementToEditGroup('text', 'href', array(
             'label'         => __('Permalink'),
             'description'   => __('The URL to which the image is linking to. To be used only if the image is permanently associated with a Simple Page, Item, Collection or Exhibit.'),
-            'order'         => 4
+            'order'         => 6
         ));
 
         if (version_compare(OMEKA_VERSION, '2.2.1') >= 0) {
