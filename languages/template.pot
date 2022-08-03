@@ -9,6 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://github.com/UCSCLibrary/AdminImages/issues\n"
 "POT-Creation-Date: 2021-11-19 6:49-0100\n"
 "PO-Revision-Date: 2022-07-22 11:43-0100\n"
+"PO-Revision-Date: 2022-08-04 00:48-0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,34 +57,34 @@ msgid "An error occurred."
 msgstr ""
 
 #: AddFileForm.php:34
-#: EditFileForm.php:34
+#: EditFileForm.php:49
 #: browse.php:17
 msgid "Title"
 msgstr ""
 
 #: AddFileForm.php:35
-#: EditFileForm.php:35
+#: EditFileForm.php:50
 msgid "The title of the image. Will be used as tooltip on mouse-over, and to identify the image in the Admin interface."
 msgstr ""
 
 #: AddFileForm.php:41
-#: EditFileForm.php:41
+#: EditFileForm.php:56
 msgid "Alt Text"
 msgstr ""
 
 #: AddFileForm.php:42
-#: EditFileForm.php:42
+#: EditFileForm.php:57
 msgid "The alternative text displayed when the image does not get loaded on a user's browser."
 msgstr ""
 
 #: AddFileForm.php:48
-#: EditFileForm.php:48
+#: EditFileForm.php:63
 #: browse.php:18
 msgid "Permalink"
 msgstr ""
 
 #: AddFileForm.php:49
-#: EditFileForm.php:49
+#: EditFileForm.php:64
 msgid "The URL to which the image is linking to. To be used only if the image is permanently associated with a Simple Page, Item, Collection or Exhibit."
 msgstr ""
 
@@ -146,15 +147,18 @@ msgid "Delete"
 msgstr ""
 
 #: browse.php:48
+#: EditFileForm.php:34
 msgid "Width"
 msgstr ""
 
 #: browse.php:49
+#: EditFileForm.php:39
 msgid "Height"
 msgstr ""
 
 #: browse.php:50
-msgid "MIME type"
+#: EditFileForm.php:44
+msgid "MIME Type"
 msgstr ""
 
 #: browse.php:53
