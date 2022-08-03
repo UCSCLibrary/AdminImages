@@ -207,12 +207,19 @@ class AdminImages_IndexController extends Omeka_Controller_AbstractActionControl
         ));
 
         $url = $image->getUrl('original');
-        $details = '';
-        if ($size = getimagesize($url)) $details = '<span class="explanation">' . __('Width') . ': <b>' . $size[0] . "px</b> | " . __('Height') . ': <b>' . $size[1] . "px</b> | ". __('MIME Type') . ': <b>' . $size['mime'] . '</b></span>';
+        if ($size = getimagesize($url)) {
+            $width = $size[0] . ' px';
+            $height = $size[1] . ' px';
+            $mime = $size['mime'];
+        } else {
+            $width = $height = $mime = '?';
+        }
         $this->view->form->populate(array('title' => $image->title,
                                           'alt' => $image->alt,
                                           'href' => $image->href,
-                                          'details' => $details
+                                          'width' => $width,
+                                          'height' => $height,
+                                          'mime' => $mime
         ));
 
         try {
@@ -234,7 +241,7 @@ class AdminImages_IndexController extends Omeka_Controller_AbstractActionControl
     public function deleteAction()
     {
         $id = $this->getRequest()->getParam('id');
-        // delete vocabulary
+        // Delete image
         if ($image = get_record_by_id('AdminImage', $id)) {
             $image->delete();
             $this->_helper->FlashMessenger->addMessage(__('The image #%s was successfully deleted.', $id), 'success');
