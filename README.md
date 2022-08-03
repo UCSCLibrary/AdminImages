@@ -2,7 +2,7 @@
 
 ## Description
 
-Plugin for Omeka Classic. Once installed, allows administrators to upload images not attached to items, for use in carousels and pages. One may need to embed static images in the html of their Omeka site; this plugin allows hosting those images on a Omeka installation without creating empty Item records to contain the static image files.
+Plugin for Omeka Classic. Once installed, allows administrators to upload images not attached to Items, for use in carousels and Simple Pages. For example, one may need to embed static images in the HTML of their Omeka site; this plugin allows hosting those images on a Omeka installation without creating empty Item records to contain the static image files.
 
 ## Installation
 Uncompress files and rename plugin folder "AdminImages".
