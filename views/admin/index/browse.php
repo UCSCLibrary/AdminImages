@@ -27,7 +27,7 @@
                 <?php $key = 0; ?>
                 <?php foreach ($images as $image): ?>
                     <tr class="admin-image-tr <?php echo (++$key%2 == 1 ? 'odd' : 'even'); ?>">
-                        <td class='id'>
+                        <td>
                             <?php
                                 echo $image->id;
                             ?>
