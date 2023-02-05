@@ -9,9 +9,13 @@
 	margin-right: .5em;
 }
 
-#admin-images-list th.id, #admin-images-list td.id {
+#admin-images-list th.id {
 	width: 1%;
 	text-align: center;
+}
+
+#admin-images-list th.id + th {
+	width: 50%;
 }
 
 input[type=file] {
